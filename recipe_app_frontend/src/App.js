@@ -1,47 +1,48 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import './theme/theme.css';
+import AppRouter from './routes/AppRouter';
 
 // PUBLIC_INTERFACE
 function App() {
+  /**
+   * Root application component.
+   * Manages light/dark theme via data-theme attribute and renders a minimal header + routes.
+   */
   const [theme, setTheme] = useState('light');
 
-  // Effect to apply theme to document element
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
   // PUBLIC_INTERFACE
   const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
   };
 
   return (
     <div className="App">
-      <header className="App-header">
-        <button 
-          className="theme-toggle" 
-          onClick={toggleTheme}
-          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-        >
-          {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
-        </button>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          Current theme: <strong>{theme}</strong>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="header">
+        <div className="container header-inner">
+          <div className="brand">
+            <div className="brand-badge" aria-hidden="true">R</div>
+            <span>Recipe Explorer</span>
+          </div>
+          <nav aria-label="Global">
+            <button
+              className="btn btn-secondary"
+              onClick={toggleTheme}
+              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+            >
+              {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
+            </button>
+          </nav>
+        </div>
       </header>
+
+      <main>
+        <AppRouter />
+      </main>
     </div>
   );
 }
