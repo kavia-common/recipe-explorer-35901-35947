@@ -1,15 +1,82 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route, Link, useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Link, useParams, useLocation, useNavigate } from 'react-router-dom';
+import useRecipes from '../hooks/useRecipes';
+import RecipeGrid from '../components/RecipeGrid';
+import Loader from '../components/Loader';
+import ErrorState from '../components/ErrorState';
+import Filters from '../components/Filters';
+import SearchBar from '../components/SearchBar';
 
 /**
- * Lightweight placeholder pages to wire up routing.
- * Replace these with real components in subsequent tasks.
+ * Home page: combines SearchBar, Filters, and RecipeGrid using useRecipes hook.
+ * Syncs the text query with URL ?q param for shareable searches.
  */
 function HomePage() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const params = new URLSearchParams(location.search);
+  const qParam = params.get('q') || '';
+
+  const {
+    filters,
+    items,
+    loading,
+    error,
+    update,
+    reset,
+  } = useRecipes({ q: qParam });
+
+  // Keep hook q in sync with URL changes
+  useEffect(() => {
+    if (qParam !== filters.q) {
+      update({ q: qParam });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [qParam]);
+
+  function setQ(nextQ) {
+    update({ q: nextQ });
+    const p = new URLSearchParams(location.search);
+    if (nextQ) p.set('q', nextQ);
+    else p.delete('q');
+    navigate({ pathname: '/', search: p.toString() ? `?${p.toString()}` : '' }, { replace: true });
+  }
+
   return (
     <div className="container py-6">
       <h1 className="h1 mb-2">Recipe Explorer</h1>
       <p className="muted">Search and discover recipes with a modern Ocean Professional theme.</p>
+
+      <div className="mt-3" style={{ display: 'grid', gap: 12 }}>
+        <SearchBar
+          value={filters.q}
+          onChange={setQ}
+          onSubmit={() => setQ(filters.q)}
+        />
+
+        <Filters
+          value={{ cuisine: filters.cuisine, ingredients: filters.ingredients }}
+          onChange={update}
+          onReset={() => {
+            reset();
+            // clear q from URL too
+            const p = new URLSearchParams(location.search);
+            p.delete('q');
+            navigate({ pathname: '/', search: p.toString() ? `?${p.toString()}` : '' }, { replace: true });
+          }}
+        />
+
+        {loading && <Loader label="Fetching recipes…" />}
+
+        {error && !loading && (
+          <ErrorState
+            message={error?.message || 'Unable to load recipes.'}
+            onRetry={() => update({})}
+          />
+        )}
+
+        {!loading && !error && <RecipeGrid items={items} />}
+      </div>
     </div>
   );
 }
