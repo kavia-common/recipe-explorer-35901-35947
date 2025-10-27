@@ -1,0 +1,383 @@
+:root {
+  /* Attempt to follow Ocean Professional theme only where compatible; base on Figma spec primarily */
+  --bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --line: rgba(0,0,0,0.2);
+  --primary: #2563EB;
+  --surface: #ffffff;
+  --shadow-1: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.screen {
+  position: relative;
+  width: 375px;
+  height: 812px;
+  margin: 0 auto;
+  background: #ffffff; /* background.color_ref color_ffffff */
+  overflow: hidden;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* Position helper: Figma coordinates are absolute within a 375x812 frame.
+   Root frame in JSON has x:426,y:-430 but we anchor at 0,0 for the canvas. */
+
+/* Status Bar (375x44 at y:-430 in Figma root; in our canvas at y:0) */
+.status-bar {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 375px;
+  height: 44px;
+}
+.status-time {
+  position: absolute;
+  left: 29.5px; /* 455.5 - 426 */
+  top: 14px;    /* -416 - (-430) = 14 */
+  width: 37px;
+  height: 18px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: left;
+  letter-spacing: 0.02em;
+}
+.status-symbols {
+  position: absolute;
+  right: 16px;
+  top: 12px;
+  width: 68px;
+  height: 13px;
+}
+.status-symbols .wifi,
+.status-symbols .cellular,
+.status-symbols .battery {
+  display: inline-block;
+  height: 12px;
+  width: 16px;
+  margin-left: 6px;
+  border-radius: 2px;
+  background: #d1d5db;
+}
+
+/* Title Group: "Hello," (x:456,y:-336) and "Welcome Back!" (x:456,y:-291) */
+.title-group {
+  position: absolute;
+  left: 30px;  /* 456 - 426 */
+  top: 94px;   /* -336 - (-430) = 94 */
+  width: 315px; /* wide enough for wrapping; group width 155 from figma is content width */
+  height: 75px;
+}
+#node-12-29.typo-60 {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 84px;
+  height: 45px;
+  margin: 0;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 45px;
+}
+#node-12-30.typo-61 {
+  position: absolute;
+  left: 0px;
+  top: 45px;
+  width: 155px;
+  height: 30px;
+  margin: 0;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  color: #374151;
+}
+
+/* Input field 1 (Email) - container at x:456,y:-204 => 30,226 */
+#node-30-585.input-field {
+  position: absolute;
+  left: 30px;
+  top: 226px;
+  width: 315px;
+  height: 81px;
+}
+#node-I30-585-30-301.label {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 120px;
+  height: 21px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #111827;
+}
+#node-I30-585-30-298.input-rect {
+  position: absolute;
+  left: 0px;
+  top: 26px; /* -178 - (-204) = 26 */
+  width: 315px;
+  height: 55px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #E5E7EB;
+  box-shadow: var(--shadow-1);
+}
+#node-30-585 .input-control {
+  position: absolute;
+  left: 20px; /* 476 - 456 = 20 */
+  top: 45px;  /* -159 - (-204) = 45 */
+  width: 275px;
+  height: 24px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  line-height: 17px;
+  color: #111827;
+}
+
+/* Input field 2 (Password) - container at x:456,y:-93 => 30,337 */
+#node-30-590.input-field {
+  position: absolute;
+  left: 30px;
+  top: 337px;
+  width: 315px;
+  height: 81px;
+}
+#node-I30-590-30-301.label {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 160px;
+  height: 21px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #111827;
+}
+#node-I30-590-30-298.input-rect {
+  position: absolute;
+  left: 0px;
+  top: 26px; /* -67 - (-93) = 26 */
+  width: 315px;
+  height: 55px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #E5E7EB;
+  box-shadow: var(--shadow-1);
+}
+#node-30-590 .input-control {
+  position: absolute;
+  left: 20px; /* 476-456 */
+  top: 45px;  /* -48 - (-93) */
+  width: 275px;
+  height: 24px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  line-height: 17px;
+  color: #111827;
+}
+
+/* Forgot Password (x:466,y:8 => 40,438 relative to canvas top) */
+.forgot-password {
+  position: absolute;
+  left: 40px;
+  top: 438px; /* 8 - (-430) = 438 */
+  width: 97px;
+  height: 17px;
+}
+.forgot-password .link {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  color: #2563EB;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Or sign in with section (x:516,y:130 => 90,560) */
+.or-with {
+  position: absolute;
+  left: 90px;
+  top: 560px; /* 130 - (-430) */
+  width: 195px;
+  height: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.or-with .line {
+  height: 1px;
+  background: var(--line);
+  flex: 0 0 50px;
+}
+.or-with .text {
+  font-size: 14px;
+  line-height: 17px;
+  color: #6B7280;
+  white-space: nowrap;
+}
+
+/* Social buttons (Google and Facebook): 44x44 each at y: 167 => top: 597 */
+.social-btn {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+.social-btn .social-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #E5E7EB;
+  box-shadow: var(--shadow-1);
+}
+#node-13-35.google {
+  left: 131px; /* 557 - 426 */
+  top: 597px;  /* 167 - (-430) */
+}
+#node-13-49.facebook {
+  left: 200px; /* 626 - 426 */
+  top: 597px;
+}
+#node-13-48.google-icon {
+  position: absolute;
+  left: 10px; /* 567-557 */
+  top: 10px;  /* 177-167 */
+  width: 24px;
+  height: 24px;
+}
+#node-13-39.google-v1 {
+  position: absolute;
+  left: 12px; /* 569-557 */
+  top: 12px;  /* 179-167 */
+  width: 20px;
+  height: 20px;
+  opacity: 0; /* layered vector hint not visible; keep for spec completeness */
+  pointer-events: none;
+}
+#node-13-42.google-v4 {
+  position: absolute;
+  left: 22px; /* 579-557 */
+  top: 20px;  /* 187-167 */
+  width: 10px;
+  height: 9.414px;
+  opacity: 0;
+  pointer-events: none;
+}
+#node-13-58.facebook-icon {
+  position: absolute;
+  left: 10px; /* 636-626 */
+  top: 10px;  /* 177-167 */
+  width: 24px;
+  height: 24px;
+}
+
+/* Big Button "Sign In" at x:456,y:50 => left:30, top:480; size 315x60 */
+.big-button {
+  position: absolute;
+  left: 30px;
+  top: 480px; /* 50 - (-430) */
+  width: 315px;
+  height: 60px;
+  border-radius: 16px;
+  border: none;
+  background: #2563EB;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.25);
+  cursor: pointer;
+  transition: transform 0.1s ease, opacity 0.2s ease;
+}
+.big-button:hover { opacity: 0.95; }
+.big-button:active { transform: translateY(1px); }
+.btn-label.typo-58 {
+  position: absolute;
+  left: 85px; /* 541 - 456 */
+  top: 18px;  /* 68 - 50 */
+  width: 114px;
+  height: 24px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  color: #ffffff;
+}
+.btn-icon {
+  position: absolute;
+  left: 210px; /* 666 - 456 */
+  top: 20px;   /* 70 - 50 */
+  width: 20px;
+  height: 20px;
+}
+
+/* CTA: Don't have an account? Sign up at x:525,y:266 => left:99, top:696 */
+.signup-cta {
+  position: absolute;
+  left: 99px;
+  top: 696px; /* 266 - (-430) */
+  width: 177px;
+  height: 17px;
+  font-size: 14px;
+  line-height: 17px;
+  color: #111827;
+}
+.signup-cta .link-inline {
+  display: inline;
+  margin-left: 6px;
+  background: none;
+  border: none;
+  color: #2563EB;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Home Indicator (x:426,y:348 => 0,778; 375x34; line at 135x5 centered) */
+.home-indicator {
+  position: absolute;
+  left: 0px;
+  top: 778px; /* 348 - (-430) */
+  width: 375px;
+  height: 34px;
+}
+.home-line {
+  position: absolute;
+  left: 120px; /* 546 - 426 */
+  top: 21px;   /* 369 - 348 */
+  width: 135px;
+  height: 5px;
+  background: #000000;
+  opacity: 0.3;
+  border-radius: 3px;
+}
+
+/* Accessibility focus styles */
+a:focus, button:focus, input:focus {
+  outline: 2px solid #2563EB;
+  outline-offset: 2px;
+}

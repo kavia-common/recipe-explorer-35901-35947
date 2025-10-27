@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign In (11:235)</title>
+  <meta name="viewport" content="width=375, initial-scale=1.0" />
+  <link rel="stylesheet" href="sign-in-11-235.css" />
+</head>
+<body>
+  <!-- Root frame sized exactly as in figma: 375x812, white background -->
+  <div id="screen-11-235" class="screen" role="main" aria-label="Sign In screen">
+    <!-- Status Bar -->
+    <div id="node-13-71" class="status-bar" aria-hidden="true">
+      <div id="node-13-71-128-319" class="status-time">19:27</div>
+      <div id="node-13-71-128-302" class="status-symbols">
+        <div class="wifi" aria-hidden="true"></div>
+        <div class="cellular" aria-hidden="true"></div>
+        <div class="battery" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <!-- Title Group: "Hello," and "Welcome Back!" -->
+    <div id="node-13-110" class="group title-group" aria-hidden="false">
+      <h1 id="node-12-29" class="typo-60">Hello,</h1>
+      <h2 id="node-12-30" class="typo-61">Welcome Back!</h2>
+    </div>
+
+    <!-- Email Input Field -->
+    <div id="node-30-585" class="input-field">
+      <label id="node-I30-585-30-301" for="email-input" class="label typo-66">Email</label>
+      <div id="node-I30-585-30-298" class="input-rect"></div>
+      <input id="email-input" class="input-control" type="email" aria-label="Email" placeholder="Enter Email" />
+    </div>
+
+    <!-- Password Input Field -->
+    <div id="node-30-590" class="input-field">
+      <label id="node-I30-590-30-301" for="password-input" class="label typo-66">Enter Password</label>
+      <div id="node-I30-590-30-298" class="input-rect"></div>
+      <input id="password-input" class="input-control" type="password" aria-label="Password" placeholder="Enter Password" />
+    </div>
+
+    <!-- Forgot Password -->
+    <div id="node-12-91" class="group forgot-password">
+      <button id="node-12-94" type="button" class="link typo-62" aria-label="Forgot Password">Forgot Password?</button>
+    </div>
+
+    <!-- Or sign in with (lines + text) -->
+    <div id="node-12-139" class="group or-with" aria-hidden="false">
+      <div id="node-12-140" class="line left"></div>
+      <div id="node-12-142" class="typo-64 text">Or Sign in With</div>
+      <div id="node-12-141" class="line right"></div>
+    </div>
+
+    <!-- Social Buttons -->
+    <button id="node-13-35" class="social-btn google" type="button" aria-label="Continue with Google">
+      <!-- Rectangle 642 (background container) -->
+      <div id="node-13-36" class="social-bg"></div>
+      <!-- icons8-google-240 1 -->
+      <img id="node-13-48" class="google-icon" src="/assets/figmaimages/figma_image_13_48.svg" alt="Google" />
+      <!-- child vector references (explicit images present in JSON for some vectors) -->
+      <img id="node-13-39" class="google-v1" src="/assets/figmaimages/figma_image_13_39.svg" alt="" aria-hidden="true" />
+      <img id="node-13-42" class="google-v4" src="/assets/figmaimages/figma_image_13_42.svg" alt="" aria-hidden="true" />
+    </button>
+
+    <button id="node-13-49" class="social-btn facebook" type="button" aria-label="Continue with Facebook">
+      <div id="node-13-50" class="social-bg"></div>
+      <img id="node-13-58" class="facebook-icon" src="/assets/figmaimages/figma_image_13_58.svg" alt="Facebook" />
+    </button>
+
+    <!-- Big Button: Sign In -->
+    <button id="node-54-668" class="big-button" type="button" aria-label="Sign In">
+      <span id="node-I54-668-53-624" class="btn-label typo-58">Sign In</span>
+      <img id="node-I54-668-53-625" class="btn-icon" src="/assets/figmaimages/figma_image_54_668_53_625.svg" alt="" aria-hidden="true" />
+    </button>
+
+    <!-- CTA: Don’t have an account? Sign up -->
+    <div id="node-13-67" class="signup-cta">
+      <span class="typo-63">Don’t have an account? </span>
+      <button class="link-inline" type="button" aria-label="Sign up">Sign up</button>
+    </div>
+
+    <!-- Home Indicator -->
+    <div id="node-42-614" class="home-indicator" aria-hidden="true">
+      <div id="node-I42-614-42-603" class="home-line"></div>
+    </div>
+  </div>
+
+  <script src="sign-in-11-235.js"></script>
+</body>
+</html>
