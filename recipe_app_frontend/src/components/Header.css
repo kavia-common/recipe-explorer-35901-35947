@@ -1,0 +1,104 @@
+.ocean-header {
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  z-index: 20;
+}
+
+.ocean-header__inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  height: 72px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.brand-title {
+  color: var(--text);
+}
+
+.brand-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(37,99,235,0.15), rgba(15,23,42,0));
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  color: var(--color-primary);
+  font-weight: 900;
+}
+
+.ocean-search {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr auto;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.input--search {
+  width: 100%;
+  min-width: 240px;
+}
+
+.input--search svg {
+  color: var(--muted);
+  flex: 0 0 auto;
+}
+
+.ocean-search__submit {
+  white-space: nowrap;
+}
+
+.ocean-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ocean-signin {
+  white-space: nowrap;
+}
+
+/* Responsive tweaks */
+@media (max-width: 760px) {
+  .ocean-header__inner {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 10px;
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .brand {
+    grid-column: 1 / 2;
+    grid-row: 1;
+  }
+  .ocean-actions {
+    grid-column: 2 / 3;
+    grid-row: 1;
+    justify-self: end;
+  }
+  .ocean-search {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+
+/* Focus styles (inherit from theme for consistency) */
+a:focus, button:focus, input:focus {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
